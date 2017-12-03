@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ModelRegGym">
+  <ClassDiagramComponents>
+    <Class name="ModelRegGym" package="model" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="noKtp" type="String" visibility="private"/>
+        <Field name="nama" type="String" visibility="private"/>
+        <Field name="biaya" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getNoKtp" returnType="String" visibility="public"/>
+        <Method name="setNoKtp" returnType="void" visibility="public">
+          <Argument type="String" name="noKtp"/>
+        </Method>
+        <Method name="getNama" returnType="String" visibility="public"/>
+        <Method name="setNama" returnType="void" visibility="public">
+          <Argument type="String" name="nama"/>
+        </Method>
+        <Method name="getJenkel" returnType="String" visibility="public"/>
+        <Method name="setJenkel" returnType="void" visibility="public">
+          <Argument type="String" name="jenkel"/>
+        </Method>
+        <Method name="getCabang" returnType="String" visibility="public"/>
+        <Method name="setCabang" returnType="void" visibility="public">
+          <Argument type="String" name="cabang"/>
+        </Method>
+        <Method name="getHanduk" returnType="String" visibility="public"/>
+        <Method name="setHanduk" returnType="void" visibility="public">
+          <Argument type="String" name="handuk"/>
+        </Method>
+        <Method name="getPaket" returnType="String" visibility="public"/>
+        <Method name="setPaket" returnType="void" visibility="public">
+          <Argument type="String" name="paket"/>
+        </Method>
+        <Method name="getBiaya" returnType="double" visibility="public"/>
+        <Method name="setBiaya" returnType="void" visibility="public">
+          <Argument type="double" name="biaya"/>
+        </Method>
+        <Method name="biayaPaket" returnType="void" visibility="public"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

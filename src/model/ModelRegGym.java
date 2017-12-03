@@ -13,8 +13,12 @@ import view.ViewRegGym;
  */
 public class ModelRegGym {
 
-    private String noKtp, nama, jenkel = "", cabang,
-            handuk = "", paket = "";
+    private String noKtp;
+    private String nama; 
+    private String jenkel = ""; 
+    private String cabang;
+    private String handuk = ""; 
+    private String paket = "";
     private double biaya = 0;
 
     public String getNoKtp() {
