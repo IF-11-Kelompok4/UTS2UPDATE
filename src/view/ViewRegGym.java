@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-
+import model.ModelRegGym;
 /**
  *
  * @author Kelompok 4 IF-11
@@ -30,9 +30,9 @@ public class ViewRegGym extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         female = new javax.swing.JRadioButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        listPaket = new javax.swing.JList<>();
+        listPaket = new javax.swing.JList<String>();
         cabang = new javax.swing.JLabel();
-        comboCabang = new javax.swing.JComboBox<>();
+        comboCabang = new javax.swing.JComboBox<String>();
         Alamat = new javax.swing.JLabel();
         output = new javax.swing.JLabel();
         HANDUK = new javax.swing.JLabel();
@@ -56,16 +56,16 @@ public class ViewRegGym extends javax.swing.JFrame {
         buttonGroup1.add(female);
         female.setText("Female");
 
-        listPaket.setModel(new javax.swing.AbstractListModel<String>() {
+        listPaket.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Reguler", "Mahasiswa", "Private", "Premium" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane4.setViewportView(listPaket);
 
         cabang.setText("Cabang");
 
-        comboCabang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CICADAS", "DAGO", "SUKAJADI", "CIBIRU" }));
+        comboCabang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CICADAS", "DAGO", "SUKAJADI", "CIBIRU" }));
 
         Alamat.setText("Jalan Pasteur No 34 - BTC Lantai 3");
 
@@ -85,6 +85,11 @@ public class ViewRegGym extends javax.swing.JFrame {
         PaketFitness.setText("Paket Fitness");
 
         Simpan.setText("Simpan");
+        Simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SimpanActionPerformed(evt);
+            }
+        });
 
         Form.setText("FORM REGISTRASI ANGGOTA GYM");
 
@@ -122,17 +127,18 @@ public class ViewRegGym extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(Form, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                                .addComponent(Fitlife, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(Form, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                                    .addComponent(Fitlife, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 9, Short.MAX_VALUE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -152,22 +158,18 @@ public class ViewRegGym extends javax.swing.JFrame {
                                             .addComponent(female)
                                             .addComponent(male)))
                                     .addComponent(cabang)
-                                    .addComponent(output))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(HANDUK)
-                            .addComponent(PaketFitness))
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbKecil)
-                            .addComponent(cbBesar)
-                            .addComponent(jScrollPane4)
-                            .addComponent(Simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                                    .addComponent(output))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(HANDUK)
+                                    .addComponent(PaketFitness))
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbKecil)
+                                    .addComponent(cbBesar)
+                                    .addComponent(jScrollPane4)
+                                    .addComponent(Simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 12, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,9 +217,9 @@ public class ViewRegGym extends javax.swing.JFrame {
                             .addComponent(PaketFitness))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Simpan)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -234,6 +236,41 @@ public class ViewRegGym extends javax.swing.JFrame {
     private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_maleActionPerformed
+
+    private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
+        // TODO add your handling code here:
+        ModelRegGym omodel = new ModelRegGym();
+        omodel.setNoKtp(txtNoKtp.getText());
+        omodel.setNama(txtNama.getText());
+
+        if (male.isSelected()) {
+            omodel.setJenkel(male.getText());
+        } else {
+            omodel.setJenkel(female.getText());
+        }
+
+        omodel.setCabang(comboCabang.getSelectedItem().toString());
+
+        if (cbBesar.isSelected()) {
+            omodel.setHanduk(cbBesar.getText());
+        }
+        if (cbKecil.isSelected()) {
+            omodel.setHanduk(cbKecil.getText());
+        }
+        if (cbBesar.isSelected() && cbKecil.isSelected()){
+            omodel.setHanduk(cbBesar.getText()+" "+cbKecil.getText());
+        }
+        omodel.setPaket(listPaket.getSelectedValue());
+        omodel.biayaPaket();
+        txtHasil.setText("No KTP\t: " + omodel.getNoKtp()
+                + "\nNama\t: " + omodel.getNama()
+                + "\nJenis Kelamin\t: " + omodel.getJenkel()
+                + "\nCabang\t: " + omodel.getCabang()
+                + "\nJenis Handuk\t: " + omodel.getHanduk()
+                + "\nPaket\t: " + omodel.getPaket()
+                + "\nBiaya\t: " + omodel.getBiaya()
+        );
+    }//GEN-LAST:event_SimpanActionPerformed
 
     /**
      * @param args the command line arguments

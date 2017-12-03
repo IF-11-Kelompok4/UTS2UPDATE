@@ -14,7 +14,8 @@ import view.ViewRegGym;
 public class ModelRegGym {
 
     private String noKtp, nama, jenkel = "", cabang,
-            handuk = "", paket = "", biaya = "";
+            handuk = "", paket = "";
+    private double biaya = 0;
 
     public String getNoKtp() {
         return noKtp;
@@ -64,14 +65,32 @@ public class ModelRegGym {
         this.paket = paket;
     }
 
-    public String getBiaya() {
+    public double getBiaya() {
         return biaya;
     }
 
-    public void setBiaya(String biaya) {
+    public void setBiaya(double biaya) {
         this.biaya = biaya;
     }
 
+    public void biayaPaket() {
+        switch (paket) {
+            case "Reguler":
+                biaya = 450000;
+                break;
+            case "Mahasiswa":
+                biaya = 300000;
+                break;
+            case "Private":
+                biaya = 750000;
+                break;
+            case "Premium":
+                biaya = 1000000;
+                break;
+            default:
+                break;
+        }
+    }
     public static void main(String[] args) {
         new ViewRegGym().setVisible(true);
     }
