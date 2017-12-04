@@ -275,7 +275,7 @@ public class ViewRegGym extends javax.swing.JFrame {
                     + "\nBiaya\t: " + omodel.getBiaya()
             );
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Semua Data Harus Diisi !!");
+            JOptionPane.showMessageDialog(null,"Data Harus Diisi Semua !!");
         }
 
     }//GEN-LAST:event_SimpanActionPerformed
