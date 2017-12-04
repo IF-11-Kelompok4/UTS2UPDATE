@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package view;
+
+import javax.swing.JOptionPane;
 import model.ModelRegGym;
+
 /**
  *
  * @author Kelompok 4 IF-11
@@ -240,36 +243,41 @@ public class ViewRegGym extends javax.swing.JFrame {
     private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
         // TODO add your handling code here:
         ModelRegGym omodel = new ModelRegGym();
-        omodel.setNoKtp(txtNoKtp.getText());
-        omodel.setNama(txtNama.getText());
+        try {
+            omodel.setNoKtp(txtNoKtp.getText());
+            omodel.setNama(txtNama.getText());
 
-        if (male.isSelected()) {
-            omodel.setJenkel(male.getText());
-        } else {
-            omodel.setJenkel(female.getText());
+            if (male.isSelected()) {
+                omodel.setJenkel(male.getText());
+            } else {
+                omodel.setJenkel(female.getText());
+            }
+
+            omodel.setCabang(comboCabang.getSelectedItem().toString());
+
+            if (cbBesar.isSelected()) {
+                omodel.setHanduk(cbBesar.getText());
+            }
+            if (cbKecil.isSelected()) {
+                omodel.setHanduk(cbKecil.getText());
+            }
+            if (cbBesar.isSelected() && cbKecil.isSelected()) {
+                omodel.setHanduk(cbBesar.getText() + " " + cbKecil.getText());
+            }
+            omodel.setPaket(listPaket.getSelectedValue());
+            omodel.biayaPaket();
+            txtHasil.setText("No KTP\t: " + omodel.getNoKtp()
+                    + "\nNama\t: " + omodel.getNama()
+                    + "\nJenis Kelamin\t: " + omodel.getJenkel()
+                    + "\nCabang\t: " + omodel.getCabang()
+                    + "\nJenis Handuk\t: " + omodel.getHanduk()
+                    + "\nPaket\t: " + omodel.getPaket()
+                    + "\nBiaya\t: " + omodel.getBiaya()
+            );
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Semua Data Harus Diisi !!");
         }
 
-        omodel.setCabang(comboCabang.getSelectedItem().toString());
-
-        if (cbBesar.isSelected()) {
-            omodel.setHanduk(cbBesar.getText());
-        }
-        if (cbKecil.isSelected()) {
-            omodel.setHanduk(cbKecil.getText());
-        }
-        if (cbBesar.isSelected() && cbKecil.isSelected()){
-            omodel.setHanduk(cbBesar.getText()+" "+cbKecil.getText());
-        }
-        omodel.setPaket(listPaket.getSelectedValue());
-        omodel.biayaPaket();
-        txtHasil.setText("No KTP\t: " + omodel.getNoKtp()
-                + "\nNama\t: " + omodel.getNama()
-                + "\nJenis Kelamin\t: " + omodel.getJenkel()
-                + "\nCabang\t: " + omodel.getCabang()
-                + "\nJenis Handuk\t: " + omodel.getHanduk()
-                + "\nPaket\t: " + omodel.getPaket()
-                + "\nBiaya\t: " + omodel.getBiaya()
-        );
     }//GEN-LAST:event_SimpanActionPerformed
 
     /**
